@@ -2,14 +2,18 @@ package com.hotels.automation.page;
 
 import com.hotels.automation.framework.Solvent;
 
+import com.hotels.automation.framework.TestBase;
 import io.cucumber.java.en.And;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class SignIn extends Solvent {
+    static Logger logger = LogManager.getLogger(TestBase.class);
     public SignIn(WebDriver driver) {
         super(driver);
     }
@@ -31,18 +35,22 @@ public class SignIn extends Solvent {
   
     
     public void clickToSignIn(){
-    	elementClick(signIn);
+        logger.info("Clicking to sign");
+        elementClick(signIn);
     }
     
-    public void enterEmail(String data){
+    public void enterEmail(String data) {
+        logger.info("Entering email");
     	type(email, data);
     }
 
     public void enterPassword(String data){
-    	type(password,data);
+    	logger.info("Entering password");
+        type(password,data);
     }
 
     public void clickToSignInButton(){
+        logger.info("Clicking to signin");
     	elementClick(signInButton);
     }
     
