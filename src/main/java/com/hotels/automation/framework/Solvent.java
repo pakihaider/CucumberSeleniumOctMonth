@@ -29,6 +29,12 @@ public class Solvent {
     	element.click();
     }
     
+    public void elementClickJS(WebElement element){
+    	logger.info("Clicking an element through JS");
+    	JavascriptExecutor executor = (JavascriptExecutor)driver;
+    	executor.executeScript("arguments[0].click();", element);
+    }
+    
     public boolean IsElementDisabled(WebElement element){
     	logger.info("Checking element is disabled");
     	return !element.isEnabled();
@@ -47,6 +53,15 @@ public class Solvent {
     public void type(WebElement element, String data){
     	logger.info("Typing values in text field");
     	element.sendKeys(data);
+    }
+    
+    public void typeAndPressTab(WebElement element, String data){
+    	logger.info("Typing values in text field");
+    	element.sendKeys(data,Keys.TAB);
+    }
+    
+    public void clear(WebElement element){
+    	element.clear();
     }
     
     
@@ -108,10 +123,15 @@ public class Solvent {
     	WebDriverWait wait = new WebDriverWait(driver, 10);
     	wait.until(ExpectedConditions.visibilityOf(element));
     }
-    
+        
     public void waitForElementToClickable(WebElement element){
     	logger.info("Waiting for element visibility...");
     	WebDriverWait wait = new WebDriverWait(driver, 10);
     	wait.until(ExpectedConditions.elementToBeClickable(element));
     }
+    
+    public String getCssValue(WebElement element, String value){
+    	return element.getCssValue(value);
+    }
+  
 }
